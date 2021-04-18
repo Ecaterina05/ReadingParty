@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "887042727469",
+    "project_id": "readingpartybooks-784df",
+    "storage_bucket": "readingpartybooks-784df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887042727469:android:48ee37e1171e5565a522a4",
+        "android_client_info": {
+          "package_name": "com.example.readingparty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887042727469-hcplfe8cf7bfitiqmcfq8h6bue53d89r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.readingparty",
+            "certificate_hash": "be3688d21649b98af3759e43864f4e07eea6ede1"
+          }
+        },
+        {
+          "client_id": "887042727469-7bc7srq6olecdbqonucd6dborf36k1g3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEhuRhV5dVpHil_ulxrltTxviztUplNkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887042727469-7bc7srq6olecdbqonucd6dborf36k1g3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

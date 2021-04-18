@@ -1,4 +1,4 @@
-package ro.example.readingparty;
+package com.example.readingparty;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,13 +8,13 @@ public class BookModel implements Parcelable {
     private String title;
     private String author;
     private String genre;
-    private Integer imageId;
+    private String imageURL;
 
-    public BookModel(String title, String author, String genre, int ImageId){
+    public BookModel(String title, String author, String genre, String imageURL){
         this.title = title;
         this.author = author;
         this.genre = genre;
-        this.imageId = ImageId;
+        this.imageURL = imageURL;
     }
 
     public String getTitle() {
@@ -29,8 +29,8 @@ public class BookModel implements Parcelable {
         return genre;
     }
 
-    public Integer getImageId() {
-        return imageId;
+    public String getImageURL() {
+        return imageURL;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class BookModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeStringArray(new String[] {this.title, this.author, this.genre, this.imageId.toString()});
+        dest.writeStringArray(new String[] {this.title, this.author, this.genre, this.imageURL});
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -61,7 +61,7 @@ public class BookModel implements Parcelable {
         this.title = data[0];
         this.author = data[1];
         this.genre = data[2];
-        this.imageId = Integer.valueOf(data[3]);
+        this.imageURL = data[3];
     }
 
 }

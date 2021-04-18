@@ -1,4 +1,4 @@
-package ro.example.readingparty;
+package com.example.readingparty;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -16,8 +16,8 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
-import ro.example.readingparty.R;
-import ro.example.readingparty.databinding.FragmentSecondBinding;
+import com.example.readingparty.R;
+import com.example.readingparty.databinding.FragmentSecondBinding;
 
 
 

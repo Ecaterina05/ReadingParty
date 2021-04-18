@@ -1,4 +1,4 @@
-package ro.example.readingparty;
+package com.example.readingparty;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -70,7 +72,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             title.setText(item.getTitle());
             author.setText(item.getAuthor());
             genre.setText(item.getGenre());
-            bookImage.setImageDrawable(ContextCompat.getDrawable(bookImage.getContext(), item.getImageId()));
+            Picasso.get().load(item.getImageURL()).into(bookImage);
+
 
 //vrem sa anuntam prin Adapter Fragmentul ca s-a dat click pe un element
             container.setOnClickListener(new View.OnClickListener() {

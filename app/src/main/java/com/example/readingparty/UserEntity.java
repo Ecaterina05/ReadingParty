@@ -1,4 +1,4 @@
-package ro.example.readingparty;
+package com.example.readingparty;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

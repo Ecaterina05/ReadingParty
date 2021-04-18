@@ -1,10 +1,11 @@
-package ro.example.readingparty;
+package com.example.readingparty;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import ro.example.readingparty.R;
+import com.example.readingparty.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class FirstFragment extends Fragment implements OnItemClickListener {
 
@@ -38,7 +45,36 @@ public class FirstFragment extends Fragment implements OnItemClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        initializeBookList();
+
+        DatabaseReference booksRef = FirebaseDatabase.getInstance().getReference("books");
+
+        booksRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    bookList.clear();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                        String book_title = snapshot.child("title").getValue().toString();
+                        String book_author = snapshot.child("author").getValue().toString();
+                        String book_genre = snapshot.child("genre").getValue().toString();
+
+                        String book_link = snapshot.child("image").getValue().toString();
+
+                        bookList.add(new BookModel(
+                                book_title,
+                                book_author,
+                                book_genre,
+                                book_link
+                        ));
+
+                    }
+                }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
 
 //        RecyclerView este un container in care se adauga o lista si Adaptarul va sti ce sa faca pe acea lista
         BookAdapter adapter = new BookAdapter(bookList, this);
@@ -48,30 +84,7 @@ public class FirstFragment extends Fragment implements OnItemClickListener {
     }
 
 
-    private void initializeBookList(){
-        bookList.removeAll(bookList);
-        bookList.add(new BookModel(
-                "The Great Gatsby",
-                "F. Scott Fitzgerald",
-                "Tragedy",
-                R.drawable.book
-        ));
 
-        bookList.add(new BookModel(
-                "Wuthering Heights",
-                "Emily Bronte",
-                "Tragedy",
-                R.drawable.book
-        ));
-
-        bookList.add(new BookModel(
-                "Murder on the Orient Express",
-                "Agatha Christie",
-                "Crime novel",
-                R.drawable.book
-        ));
-
-    }
 
     @Override
     public void onItemClick(BookModel item) {

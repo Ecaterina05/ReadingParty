@@ -1,4 +1,4 @@
-package ro.example.readingparty;
+package com.example.readingparty;
 
 import android.app.Activity;
 import android.content.Intent;

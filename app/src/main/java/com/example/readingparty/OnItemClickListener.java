@@ -1,4 +1,4 @@
-package ro.example.readingparty;
+package com.example.readingparty;
 
 public interface OnItemClickListener {
     void onItemClick(BookModel item);
