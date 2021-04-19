@@ -86,6 +86,7 @@ public class FirstFragment extends Fragment implements OnItemClickListener {
 
 
 
+
     @Override
     public void onItemClick(BookModel item) {
         //      Toast.makeText(getContext(), item.getTitle(), Toast.LENGTH_LONG).show();
@@ -104,4 +105,6 @@ public class FirstFragment extends Fragment implements OnItemClickListener {
 
         fragmentTransaction.commit();
     }
+
+    
 }
