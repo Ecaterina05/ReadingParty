@@ -18,6 +18,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivityLog extends AppCompatActivity {
@@ -34,22 +35,14 @@ public class MainActivityLog extends AppCompatActivity {
 
     CallbackManager callbackManager;
     @Override
+    public void onBackPressed() {}
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main2);
-
-
-
-
-
         initViews();
 
-        //SharedPreferences sharedPreferences=getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-        //sharedpreferencesss=getApplicationContext().getSharedPreferences(MyPREFERENCES, 0);
         String login = sharedPreferences.getString(KEY_USER, null);
 
 
@@ -74,8 +67,12 @@ public class MainActivityLog extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         SignInCompleted();
-                                        //btnSignIn.setText("Sign Out");
-                                        Intent intent = new Intent(MainActivityLog.this, MainActivity.class);
+
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString(KEY_USER, txtUsername);
+                                        editor.putString(KEY_PASSWORD, txtPass);
+                                        editor.apply();
+                                        Intent intent = new Intent(MainActivityLog.this, ForNavActivity.class);
                                         startActivity(intent);
 
                                     }
@@ -100,25 +97,17 @@ public class MainActivityLog extends AppCompatActivity {
                         }
                     }).start();
 
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(KEY_USER, txtUsername);
-                    editor.putString(KEY_PASSWORD, txtPass);
-                    editor.apply();
 
                 }
             });
         } else {
 
-            btnSignIn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(MainActivityLog.this, "Already logged in", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(MainActivityLog.this, MainActivity.class);
+                    Intent intent = new Intent(MainActivityLog.this, ForNavActivity.class);
                     startActivity(intent);
                 }
-            });
 
-        }
+
+
         loginButton = findViewById(R.id.login_button);
         callbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {

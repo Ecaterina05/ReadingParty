@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.readingparty">
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -27,15 +28,17 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.readingparty.ForNavActivity"></activity>
 
         <activity android:name="com.example.readingparty.FacebookLoginActivity"></activity>
         <activity android:name="com.example.readingparty.SignUpActivity"></activity>
         <activity android:name="com.example.readingparty.MainActivity"></activity>
         <activity android:name="com.example.readingparty.MainActivityLog">
-            <intent-filter>
+            <intent-filter tools:ignore="ExtraText">
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
         <meta-data
