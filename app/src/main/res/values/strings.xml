@@ -6,6 +6,38 @@
     <string name="channel_name">Channel name</string>
     <string name="facebook_app_id">2957414704478589</string>
     <string name="fb_login_protocol_scheme">fb2957414704478589</string>
+    <string name="Home">Home</string>
+    <string name="Favorites">Favorites</string>
+    <string name="Categories">Categories</string>
+    <string name="LogOut">Log Out</string>
+    <string name="Welcome">Welcome</string>
+    <string name="messageHello">Congrats, you joined the party! Now go to Home to see how we\'re having fun here!</string>
+    <string name="SignOut">Sign Out</string>
+    <string name="partyPooper">...or be a party pooper and...</string>
+
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="create_account">Create Account</string>
+
+    <string name="enter_your_name">Enter your name!</string>
+    <string name="enter_your_email_address">Enter your email address!</string>
+    <string name="enter_you_username">Enter your username!</string>
+    <string name="enter_a_password">Enter a password!</string>
+    <string name="re_enter_your_password">Re-enter your password!</string>
+    <string name="password_doesn_t_match">Password doesn\'t match!</string>
+
+    <string name="enter_your_age">Enter your age</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="name">Name</string>
+    <string name="reading_party">Reading Party</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+
+    <string name="username">Username</string>
+    <string name="enter_your_username">Enter your username!</string>
+    <string name="enter_your_password">Enter your Password!</string>
+    <string name="browse_through_our_recommendations">Browse through our recommendations!</string>
     <integer name="design_snackbar_text_max_lines">5</integer>
 
 </resources>
