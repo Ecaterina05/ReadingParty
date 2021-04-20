@@ -33,6 +33,10 @@ public class ForNavActivity extends AppCompatActivity {
 
                         selectedFragment=new HelloFragment();
                         break;
+                    case R.id.favorites:
+                        selectedFragment=new FavoritesFragment();
+                    case R.id.categories:
+                        selectedFragment=new CategoriesFragment();
 
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
@@ -47,6 +51,6 @@ public class ForNavActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HelloFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FirstFragment()).commit();
     }
 }
