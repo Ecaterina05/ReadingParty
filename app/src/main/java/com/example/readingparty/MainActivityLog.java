@@ -120,12 +120,34 @@ public class MainActivityLog extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+
+
+
+//                AccessToken accessToken=loginResult.getAccessToken();
+//                GraphRequest request=GraphRequest.newMeRequest(accessToken,
+//                        new GraphRequest.GraphJSONObjectCallback() {
+//                            @Override
+//                            public void onCompleted(JSONObject object, GraphResponse response) {
+//                                try{
+//                                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                                editor.putString(KEY_USER, txtUsername);
+//                                response.getJSONObject().get("name").toString();
+//                                editor.apply();
+//
+//                            }catch (JSONException e){e.printStackTrace();}
+//                            }
+//                        }
+//
+//                );
+//                Bundle parameters=new Bundle();
+//                parameters.putString("fields","name");
+//                request.setParameters(parameters);
+//                request.executeAsync();
                 Profile profile=Profile.getCurrentProfile();
                 txtUsername=profile.getFirstName().toString();
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(KEY_USER, txtUsername);
                 editor.apply();
-                Toast.makeText(MainActivityLog.this, "Ngataaaa", Toast.LENGTH_SHORT).show();
                 openHellotxt();
             }
 
@@ -136,7 +158,7 @@ public class MainActivityLog extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException error) {
-                //Toast.makeText(MainActivity.this, "No", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -144,8 +166,7 @@ public class MainActivityLog extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivityLog.this, ForNavActivity.class);
-//                startActivity(intent);
+
             }
 
         });
