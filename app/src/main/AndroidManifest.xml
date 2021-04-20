@@ -30,7 +30,6 @@
         </activity>
         <activity android:name="com.example.readingparty.ForNavActivity"></activity>
 
-        <activity android:name="com.example.readingparty.FacebookLoginActivity"></activity>
         <activity android:name="com.example.readingparty.SignUpActivity"></activity>
         <activity android:name="com.example.readingparty.MainActivity"></activity>
         <activity android:name="com.example.readingparty.MainActivityLog">

@@ -7,19 +7,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivityLog extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -31,8 +40,7 @@ public class MainActivityLog extends AppCompatActivity {
     public static final String MyPREFERENCES = "MyPrefs" ;
     private static final String KEY_USER="username";
     private static final String KEY_PASSWORD="password";
-
-
+    public String txtUsername, txtPass;
     CallbackManager callbackManager;
     @Override
     public void onBackPressed() {}
@@ -53,8 +61,8 @@ public class MainActivityLog extends AppCompatActivity {
                 public void onClick(View v) {
 
 
-                    String txtUsername = username.getText().toString();
-                    String txtPass = password.getText().toString();
+                     txtUsername = username.getText().toString();
+                    txtPass = password.getText().toString();
 
                     UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                     UserDao userDao = userDatabase.userDao();
@@ -102,10 +110,9 @@ public class MainActivityLog extends AppCompatActivity {
             });
         } else {
 
-                    Intent intent = new Intent(MainActivityLog.this, ForNavActivity.class);
-                    startActivity(intent);
-                }
-
+            Intent intent = new Intent(MainActivityLog.this, ForNavActivity.class);
+            startActivity(intent);
+        }
 
 
         loginButton = findViewById(R.id.login_button);
@@ -113,8 +120,13 @@ public class MainActivityLog extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                //Toast.makeText(MainActivity.this, "it works", Toast.LENGTH_SHORT).show();
-                //Picasso.with().load(imageURL).into(profilePicture);
+                Profile profile=Profile.getCurrentProfile();
+                txtUsername=profile.getFirstName().toString();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(KEY_USER, txtUsername);
+                editor.apply();
+                Toast.makeText(MainActivityLog.this, "Ngataaaa", Toast.LENGTH_SHORT).show();
+                openHellotxt();
             }
 
             @Override
@@ -128,17 +140,17 @@ public class MainActivityLog extends AppCompatActivity {
             }
         });
 
-        //final Activity activity = this;
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //List<String> perm = new ArrayList<String>();
-                //perm.add("user_friends");
-                //LoginManager.getInstance().logInWithReadPermissions(activity, perm);
-
+//                Intent intent = new Intent(MainActivityLog.this, ForNavActivity.class);
+//                startActivity(intent);
             }
+
         });
+
+
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,6 +164,13 @@ public class MainActivityLog extends AppCompatActivity {
 
     }
 
+
+
+
+    public void openHellotxt(){
+        Intent intent = new Intent(MainActivityLog.this,ForNavActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
