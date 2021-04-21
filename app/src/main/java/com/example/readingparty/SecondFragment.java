@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,12 +19,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.readingparty.R;
 import com.example.readingparty.databinding.FragmentSecondBinding;
-
+import com.squareup.picasso.Picasso;
 
 
 public class SecondFragment extends Fragment {
 
-    public static String CHANNEL_ID = "channel";
+   // public static String CHANNEL_ID = "channel";
 
     private FragmentSecondBinding dataBinding;
 
@@ -49,44 +50,39 @@ public class SecondFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            String title = bundle.getString(FirstFragment.BOOK_TITLE);
-            ((TextView) view.findViewById(R.id.title)).setText(title);
 
-            BookModel movie = bundle.getParcelable(FirstFragment.BOOK);
+           String descriere= bundle.getString(FirstFragment.BOOK_DESC);
+           ((TextView) view.findViewById(R.id.title)).setText(descriere);
+
+            BookModel book = bundle.getParcelable(FirstFragment.BOOK);
         }
 
-        view.findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createNotif();
-            }
-        });
-
-
-        dataBinding.btn.setText("text data binding");
-    }
-
-    private void createNotif(){
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle("Notificare")
-                .setContentText("Descriere notificare")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = getString(R.string.channel_name);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = requireActivity().getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
-        // notificationId is a unique int for each notification that you must define
-        notificationManager.notify(1, builder.build());
 
     }
+
+//    private void createNotif(){
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+//                .setSmallIcon(R.drawable.ic_launcher_foreground)
+//                .setContentTitle("Notificare")
+//                .setContentText("Descriere notificare")
+//                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            CharSequence name = getString(R.string.channel_name);
+//            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+//            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+//
+//            // Register the channel with the system; you can't change the importance
+//            // or other notification behaviors after this
+//            NotificationManager notificationManager = requireActivity().getSystemService(NotificationManager.class);
+//            notificationManager.createNotificationChannel(channel);
+//        }
+//
+//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
+//        // notificationId is a unique int for each notification that you must define
+//        notificationManager.notify(1, builder.build());
+//
+//    }
+
+
 }

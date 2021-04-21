@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,13 +26,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-public class FirstFragment extends Fragment implements OnItemClickListener {
+public class CategoryFragment extends Fragment implements OnItemClickListener {
 
     public static List<BookModel> bookList = new ArrayList<>();
     public static String BOOK_DESC = "book desc";
-    public static String BOOK = "book";
+    public static String genul = "gen";
 
-    public FirstFragment() {
+    public CategoryFragment() {
         super(R.layout.fragment_first);
     }
 
@@ -46,21 +47,31 @@ public class FirstFragment extends Fragment implements OnItemClickListener {
         super.onViewCreated(view, savedInstanceState);
 
 
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+
+             genul= bundle.getString(CategoriesFragment.GENUL);
+
+        }
+
+
         DatabaseReference booksRef = FirebaseDatabase.getInstance().getReference("books");
 
         booksRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    bookList.clear();
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                bookList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-                        String book_title = snapshot.child("title").getValue().toString();
-                        String book_author = snapshot.child("author").getValue().toString();
-                        String book_genre = snapshot.child("genre").getValue().toString();
+                    String book_title = snapshot.child("title").getValue().toString();
+                    String book_author = snapshot.child("author").getValue().toString();
+                    String book_genre = snapshot.child("genre").getValue().toString();
 
-                        String book_link = snapshot.child("image").getValue().toString();
-                        String book_desc = snapshot.child("description").getValue().toString();
+                    String book_link = snapshot.child("image").getValue().toString();
+                    String book_desc = snapshot.child("description").getValue().toString();
+
+                    if(genul.equals(book_genre)) {
                         bookList.add(new BookModel(
                                 book_title,
                                 book_author,
@@ -68,9 +79,10 @@ public class FirstFragment extends Fragment implements OnItemClickListener {
                                 book_link,
                                 book_desc
                         ));
-
                     }
+
                 }
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -108,5 +120,5 @@ public class FirstFragment extends Fragment implements OnItemClickListener {
         fragmentTransaction.commit();
     }
 
-    
+
 }

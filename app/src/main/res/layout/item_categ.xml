@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/container2"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+
+    android:layout_margin="5dp"
+    android:background="@drawable/bg_categ_item"
+    >
+
+    <TextView
+        android:id="@+id/genre2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:fontFamily="@font/henny_penny"
+        android:gravity="center"
+
+        android:text="@string/genre"
+        android:textSize="40sp"
+        android:textColor="#673AB7"
+
+        />
+
+
+</LinearLayout>

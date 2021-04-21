@@ -9,12 +9,14 @@ public class BookModel implements Parcelable {
     private String author;
     private String genre;
     private String imageURL;
+    private String desc;
 
-    public BookModel(String title, String author, String genre, String imageURL){
+    public BookModel(String title, String author, String genre, String imageURL, String desc){
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.imageURL = imageURL;
+        this.desc = desc;
     }
 
     public String getTitle() {
@@ -31,6 +33,10 @@ public class BookModel implements Parcelable {
 
     public String getImageURL() {
         return imageURL;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 
     @Override
@@ -54,7 +60,7 @@ public class BookModel implements Parcelable {
     };
 
     public BookModel(Parcel in){
-        String[] data = new String[4];
+        String[] data = new String[5];
 
         in.readStringArray(data);
         // the order needs to be the same as in writeToParcel() method
@@ -62,6 +68,7 @@ public class BookModel implements Parcelable {
         this.author = data[1];
         this.genre = data[2];
         this.imageURL = data[3];
+        this.desc = data[4];
     }
 
 }
