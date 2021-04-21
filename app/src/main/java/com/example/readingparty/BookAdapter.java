@@ -3,6 +3,7 @@ package com.example.readingparty;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,7 +56,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         private final TextView genre;
         private final ImageView bookImage;
         private final ConstraintLayout container;
-
+        private final ImageButton btnLove;
 
         public BookViewHolder(View view){
             super(view);
@@ -65,7 +66,14 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             genre = view.findViewById(R.id.genre);
             bookImage = view.findViewById(R.id.image);
             container = view.findViewById(R.id.container);
+            btnLove=view.findViewById(R.id.btnLove);
 
+            btnLove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
 
         public void bind(BookModel item){

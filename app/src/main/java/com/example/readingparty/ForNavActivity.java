@@ -33,6 +33,10 @@ public class ForNavActivity extends AppCompatActivity {
 
                         selectedFragment=new HelloFragment();
                         break;
+                    case R.id.favorites:
+                        selectedFragment=new FavoritesFragment();
+                    case R.id.categories:
+                        selectedFragment=new CategoriesFragment();
 
                     case R.id.categories:
                         selectedFragment=new CategoriesFragment();

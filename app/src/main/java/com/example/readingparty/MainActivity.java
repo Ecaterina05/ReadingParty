@@ -21,16 +21,5 @@ public class MainActivity extends AppCompatActivity {
         moveTaskToBack(true);
         finish();
     }
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event)
-//    {
-//        startActivity(new Intent(MainActivity.this, HelloActivity.class));
-//        Toast.makeText(this,"onBackPressed", Toast.LENGTH_SHORT).show();
-//
-//        if(keyCode== KeyEvent.KEYCODE_BACK)   {
-//
-//            finish();
-//        }
-//        return true;
-//    }
+
 }
